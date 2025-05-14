@@ -3,8 +3,6 @@ plugins {
 	id 'org.springframework.boot' version '3.4.5'
 	id 'io.spring.dependency-management' version '1.1.7'
 	id 'maven-publish'
-	id 'signing'
-	id 'io.github.gradle-nexus.publish-plugin' version '1.1.0'
 }
 
 group = 'io.github.open-source-lfernandes'
@@ -53,9 +51,18 @@ tasks.jar {
 	enabled = true
 }
 
-ext.isReleaseVersion = !version.endsWith("SNAPSHOT")
-
 publishing {
+	repositories {
+		maven {
+			name = "GitHubPackages"
+			url = "https://maven.pkg.github.com/open-source-lfernandes/spring-log-utils"
+			credentials {
+				username = System.getenv("GITHUB_ACTOR")
+				password = System.getenv("GITHUB_TOKEN")
+			}
+		}
+	}
+
 	publications {
 		mavenJava(MavenPublication) {
 			from components.java
@@ -84,17 +91,4 @@ publishing {
 			}
 		}
 	}
-}
-
-nexusPublishing {
-	repositories {
-		sonatype {
-			username = ossrhUsername
-			password = ossrhPassword
-		}
-	}
-}
-
-tasks.withType(Sign).configureEach {
-	onlyIf { isReleaseVersion }
 }
