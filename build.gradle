@@ -1,0 +1,100 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.4.5'
+	id 'io.spring.dependency-management' version '1.1.7'
+	id 'maven-publish'
+	id 'signing'
+	id 'io.github.gradle-nexus.publish-plugin' version '1.1.0'
+}
+
+group = 'io.github.open-source-lfernandes'
+version = '1.0.0-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(21)
+	}
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-autoconfigure:3.4.1'
+	implementation 'org.springframework.boot:spring-boot-configuration-processor:3.4.1'
+	implementation 'org.springframework.boot:spring-boot-starter-aop:3.4.1'
+
+	implementation 'com.fasterxml.jackson.core:jackson-databind:2.19.0'
+	implementation 'com.google.guava:guava:33.4.8-jre'
+
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
+tasks.bootJar {
+	enabled = false
+}
+
+tasks.jar {
+	enabled = true
+}
+
+ext.isReleaseVersion = !version.endsWith("SNAPSHOT")
+
+publishing {
+	publications {
+		mavenJava(MavenPublication) {
+			from components.java
+			pom {
+				name = 'Spring Log Utils'
+				description = 'Utilities for Spring Boot logging'
+				url = 'https://github.com/open-source-lfernandes/spring-log-utils'
+				licenses {
+					license {
+						name = 'Apache License 2.0'
+						url = 'https://www.apache.org/licenses/LICENSE-2.0.txt'
+					}
+				}
+				developers {
+					developer {
+						id = 'open-source-lfernandes'
+						name = 'Lucas Fernandes'
+						email = 'lucas.rj.fernandes@gmail.com'
+					}
+				}
+				scm {
+					connection = 'scm:git:git://github.com/open-source-lfernandes/spring-log-utils.git'
+					developerConnection = 'scm:git:ssh://github.com:open-source-lfernandes/spring-log-utils.git'
+					url = 'https://github.com/open-source-lfernandes/spring-log-utils/tree/master'
+				}
+			}
+		}
+	}
+}
+
+nexusPublishing {
+	repositories {
+		sonatype {
+			username = ossrhUsername
+			password = ossrhPassword
+		}
+	}
+}
+
+tasks.withType(Sign).configureEach {
+	onlyIf { isReleaseVersion }
+}

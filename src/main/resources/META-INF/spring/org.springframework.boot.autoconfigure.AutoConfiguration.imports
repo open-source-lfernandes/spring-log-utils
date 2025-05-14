@@ -1,0 +1,3 @@
+io.github.ice_lfernandes.spring.log.utils.features.aspect.GlobalHttpMethodLogAspect
+io.github.ice_lfernandes.spring.log.utils.features.aspect.LogExecutionAspect
+io.github.ice_lfernandes.spring.log.utils.features.aspect.HttpMethodLogExecutionAspect
