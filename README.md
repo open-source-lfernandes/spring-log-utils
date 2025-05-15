@@ -26,7 +26,7 @@ To use this library in a Maven project, add the following dependency to your `po
 <dependency>
     <groupId>io.github.ice-lfernandes</groupId>
     <artifactId>spring-log-utils</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
 </dependency>
 ```
 
