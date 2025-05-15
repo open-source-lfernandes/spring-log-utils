@@ -128,3 +128,20 @@ public record User(
 7. `ZIP_CODE`: Masks all characters except the last 3, excluding hyphens.
 8. `NUMBER`: Masks all numeric characters.
 9. `TELEPHONE`: Masks all characters except the last 2, excluding hyphens.
+
+### Usage Example for `customMaskRegex`
+
+The `customMaskRegex` attribute allows you to define a custom regular expression for masking sensitive data. This takes precedence over the predefined `maskedType`.
+
+#### Example:
+
+```java
+public class User {
+    @MaskSensitiveData(customMaskRegex = "\\d{4}-\\d{2}-\\d{2}")
+    private String dateOfBirth;
+
+    @MaskSensitiveData(maskedType = MaskedType.EMAIL)
+    private String email;
+
+    // Getters and setters
+}
