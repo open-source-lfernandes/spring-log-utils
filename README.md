@@ -33,7 +33,7 @@ To use this library in a Maven project, add the following dependency to your `po
 ### Gradle
 To use this library in a Gradle project, add the following dependency to your `build.gradle`:
 ```groovy
-implementation 'io.github.ice-lfernandes:spring-log-utils:1.0.0-SNAPSHOT'
+implementation 'io.github.ice-lfernandes:spring-log-utils:1.0.0'
 ```
 
 ## Usage
