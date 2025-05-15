@@ -31,7 +31,6 @@ public class HttpMethodLogExecutionAspect {
      *
      * @param joinPoint The proceeding join point representing the intercepted method
      * @return The result of the intercepted method execution
-     * @throws Throwable If the intercepted method throws an exception
      * @see HttpMethodLogExecution#logReturn()
      * @see HttpMethodLogExecution#logParameters()
      */

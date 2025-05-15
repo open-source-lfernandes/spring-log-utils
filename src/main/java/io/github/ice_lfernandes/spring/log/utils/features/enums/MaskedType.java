@@ -10,7 +10,6 @@ import lombok.Getter;
  * <pre>
  * MaskedType.EMAIL.getRegex(); // Returns regex for email masking
  * </pre>
- * </p>
  */
 @Getter
 public enum MaskedType {

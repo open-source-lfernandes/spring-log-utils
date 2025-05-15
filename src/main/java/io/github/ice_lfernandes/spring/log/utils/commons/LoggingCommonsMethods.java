@@ -29,7 +29,6 @@ public class LoggingCommonsMethods {
      * @param logReturn Whether to log the method's return value
      * @param logParameters Whether to log the method's input parameters
      * @return The result of the intercepted method execution
-     * @throws Throwable If the intercepted method throws an exception
      *
      * <p>Logs include:
      * <ul>
@@ -39,7 +38,6 @@ public class LoggingCommonsMethods {
      *   <li>Return value (if enabled)</li>
      *   <li>Execution time in milliseconds</li>
      * </ul>
-     * </p>
      */
     @SneakyThrows
     public Object logInterceptJoinPoint(ProceedingJoinPoint joinPoint, boolean logReturn, boolean logParameters) {

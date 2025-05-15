@@ -38,7 +38,6 @@ import static java.util.Objects.nonNull;
  *   <li>{@link Short}</li>
  *   <li>{@link Double}</li>
  * </ul>
- * </p>
  *
  * @see MaskSensitiveData
  * @see MaskedType
@@ -71,7 +70,6 @@ public interface LogMask extends Serializable {
      *
      * <p>Example output:
      * <pre>{@code User{name=***, email=****@***.com}}</pre>
-     * </p>
      */
     @SneakyThrows
     default String mask(Object object) {

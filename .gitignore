@@ -17,3 +17,8 @@ bin/
 *.hprof
 
 gradle.properties
+/gpg
+/gradle/*
+
+/gradle/plugins/
+/.jreleaser/

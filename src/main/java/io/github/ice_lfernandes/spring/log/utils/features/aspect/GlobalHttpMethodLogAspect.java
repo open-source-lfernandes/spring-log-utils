@@ -20,12 +20,6 @@ import static java.util.Objects.isNull;
  *
  * <p>The aspect is conditionally enabled based on the property {@code spring.loggable-utils.global.httpMethod.enabled}.
  * If the property is not set, it is enabled by default.</p>
- *
- * @see org.springframework.web.bind.annotation.PostMapping
- * @see org.springframework.web.bind.annotation.PutMapping
- * @see org.springframework.web.bind.annotation.PatchMapping
- * @see org.springframework.web.bind.annotation.DeleteMapping
- * @see org.springframework.web.bind.annotation.GetMapping
  */
 @Aspect
 @Component
@@ -47,7 +41,6 @@ public class GlobalHttpMethodLogAspect {
      *
      * @param joinPoint The proceeding join point representing the intercepted method
      * @return The result of the intercepted method execution
-     * @throws Throwable If the intercepted method throws an exception
      */
     @Around("@annotation(org.springframework.web.bind.annotation.PostMapping) || " +
             "@annotation(org.springframework.web.bind.annotation.PutMapping) || " +

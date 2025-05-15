@@ -35,7 +35,6 @@ public class LogExecutionAspect {
      *
      * @param joinPoint The proceeding join point for method interception
      * @return The result of the intercepted method execution
-     * @throws Throwable Propagates any exceptions from the intercepted method
      * @see LoggingCommonsMethods#logInterceptJoinPoint
      */
     @Around("@annotation(io.github.ice_lfernandes.spring.log.utils.features.annotations.LogExecution)")
